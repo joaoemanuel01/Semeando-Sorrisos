@@ -30,7 +30,7 @@ export default function SobreNos() {
             </p>
             <p className="font-body text-navy-700/80 text-lg leading-relaxed mb-8">
               Cada ação é planejada, organizada e executada com responsabilidade e
-              acompanhamento — porque acreditamos que transformação social começa
+              acompanhamento, porque acreditamos que transformação social começa
               com vínculos humanos genuínos.
             </p>
 

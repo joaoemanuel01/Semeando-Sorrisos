@@ -47,9 +47,6 @@ O projeto foi construído utilizando as melhores práticas de desenvolvimento we
 
 O design utiliza uma paleta de cores baseada em tons de **Azul Aquamarino** e **Branco**, transmitindo calma, transparência e esperança.
 
-| Mobile | Desktop |
-|---|---|
-| *(Adicione aqui seu screenshot mobile)* | *(Adicione aqui seu screenshot desktop)* |
 
 ## 🔧 Como Executar o Projeto
 

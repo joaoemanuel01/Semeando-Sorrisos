@@ -3,7 +3,7 @@ import { Send, ExternalLink } from 'lucide-react';
 
 // Donation items
 const DONATIONS = [
-  { icon: '👕', title: 'Roupas E Sapatos',   desc: 'Para crianças e adultos, em bom estado de conservação.' },
+  { icon: '👕', title: 'Roupas e Sapatos',   desc: 'Para crianças e adultos, em bom estado de conservação.' },
   { icon: '🥫', title: 'Alimentos',           desc: 'Alimentos não-perecíveis e produtos da cesta básica.' },
   { icon: '🧴', title: 'Higiene Pessoal',     desc: 'Produtos de higiene geral para adultos.' },
   { icon: '🍼', title: 'Higiene Infantil',    desc: 'Fraldas, lenços umedecidos, sabonete infantil e mais.' },
@@ -100,8 +100,7 @@ export default function ComoAjudar() {
                 Sua presença é o maior presente.
               </h3>
               <p className="font-body text-navy-700/80 text-lg leading-relaxed mb-6">
-                Junte-se a nós como voluntário. Não é preciso experiência — apenas
-                vontade de ajudar e acolher.
+                Junte-se a nós como voluntário. Vamos juntos levar cuidado, carinho e presença para quem mais precisa💛
               </p>
               <a
                 href={`https://www.instagram.com/semeandosorrisosjg`}

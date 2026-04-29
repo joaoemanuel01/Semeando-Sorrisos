@@ -44,7 +44,7 @@ export default function Impacto() {
             Nosso <span className="text-aqua-600">Impacto</span>
           </h2>
           <p className="font-body text-navy-700/70 mt-4 max-w-xl mx-auto">
-            Cada número representa uma vida tocada, uma família apoiada, um vínculo construído.
+            Por trás de cada número, existe uma história real que ganhou um novo capítulo de esperaça e recomeço.
           </p>
         </div>
 

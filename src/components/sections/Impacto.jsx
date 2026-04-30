@@ -1,10 +1,14 @@
 import { useCounter } from '../../hooks/useCounter';
+import iconFamilias    from '../../assets/icon-familias.png';
+import iconAlimentos   from '../../assets/icon-alimentos.png';
+import iconVoluntarios from '../../assets/icon-voluntarios.png';
+import iconSorrisos    from '../../assets/icon-sorrisos.png';
 
 const STATS = [
-  { target: 500,  prefix: '+',  suffix: '',          label: 'Famílias Apoiadas',    icon: '🏠' },
-  { target: 1,    prefix: '+',  suffix: ' Ton.',     label: 'Alimentos Arrecadados', icon: '🌾' },
-  { target: 50,   prefix: '+',  suffix: '',          label: 'Voluntários Ativos',   icon: '🙌' },
-  { target: 1200, prefix: '+',  suffix: '',          label: 'Sorrisos Semeados',    icon: '😊' },
+  { target: 500,  prefix: '+', suffix: '',      label: 'Famílias Apoiadas',     img: iconFamilias    },
+  { target: 2,    prefix: '+', suffix: ' Ton.', label: 'Alimentos Arrecadados', img: iconAlimentos   },
+  { target: 50,   prefix: '+', suffix: '',      label: 'Voluntários Ativos',    img: iconVoluntarios },
+  { target: 1200, prefix: '+', suffix: '',      label: 'Sorrisos Semeados',     img: iconSorrisos    },
 ];
 
 function StatCard({ stat }) {
@@ -13,11 +17,18 @@ function StatCard({ stat }) {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center text-center px-4 py-8"
+      className="flex flex-col items-center text-center px-4 py-8 gap-1"
     >
-      <span className="text-4xl mb-3">{stat.icon}</span>
-      <p className="font-display font-bold text-navy-800 leading-none mb-2"
-         style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)' }}>
+      <img
+        src={stat.img}
+        alt={stat.label}
+        className="w-16 h-16 object-contain drop-shadow-md mb-2"
+        draggable={false}
+      />
+      <p
+        className="font-display font-bold text-navy-800 leading-none mb-1"
+        style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)' }}
+      >
         {stat.prefix}{count.toLocaleString('pt-BR')}{stat.suffix}
       </p>
       <p className="font-body text-sm font-medium text-aqua-700 tracking-wide uppercase">
@@ -44,16 +55,14 @@ export default function Impacto() {
             Nosso <span className="text-aqua-600">Impacto</span>
           </h2>
           <p className="font-body text-navy-700/70 mt-4 max-w-xl mx-auto">
-            Por trás de cada número, existe uma história real que ganhou um novo capítulo de esperaça e recomeço.
+            Cada número representa uma vida tocada, uma família apoiada, um vínculo construído.
           </p>
         </div>
 
-        {/* Divider */}
-        <div className="w-16 h-1 bg-aqua-400 rounded-full mx-auto mb-12" />
+        <div className="w-16 h-1 bg-aqua-400 rounded mx-auto mb-12" />
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 
-                        divide-aqua-200 bg-white/60 backdrop-blur-sm rounded-3xl 
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0
+                        divide-aqua-200 bg-white/60 backdrop-blur-sm rounded
                         shadow-sm border border-aqua-100 overflow-hidden">
           {STATS.map((stat, i) => (
             <StatCard key={i} stat={stat} />

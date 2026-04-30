@@ -1,6 +1,9 @@
-import { Heart, Users } from 'lucide-react';
+import { Users,  } from 'lucide-react';
+import { useHighlight } from '../../context/HighlightContext';
 
 export default function Hero() {
+  const { triggerHighlight } = useHighlight();
+
   return (
     <section
       id="hero"
@@ -11,11 +14,11 @@ export default function Hero() {
     >
       {/* Decorative blobs */}
       <div
-        className="absolute top-20 right-0 w-72 h-72 md:w-96 md:h-96 rounded-full opacity-20 pointer-events-none"
+        className="absolute top-20 right-0 w-72 h-72 md:w-96 md:h-96 opacity-20 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #38cef5 0%, transparent 70%)' }}
       />
       <div
-        className="absolute bottom-10 left-0 w-56 h-56 rounded-full opacity-15 pointer-events-none"
+        className="absolute bottom-10 left-0 w-56 h-56 opacity-15 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #0293c0 0%, transparent 70%)' }}
       />
 
@@ -29,12 +32,12 @@ export default function Hero() {
         </div>
 
         {/* Title */}
-        <h1 className="font-display font-bold text-navy-800 leading-tight mb-6"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}>
+        <h1
+          className="font-display font-bold text-navy-800 leading-tight mb-6"
+          style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}
+        >
           Semeando Sorrisos:{' '}
-          <span className="text-aqua-600">
-            Transformando Doações em Ações
-          </span>
+          <span className="text-aqua-600">Transformando Doações em Ações</span>
         </h1>
 
         {/* Subtitle */}
@@ -46,14 +49,15 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#ajudar" className="btn-primary text-base w-full sm:w-auto justify-center">
+          
+          <button
+            onClick={triggerHighlight}
+            className="btn-primary text-base w-full sm:w-auto justify-center"
+          >
             <Users size={18} />
             Quero Ser Voluntário
-          </a>
-          <a href="#ajudar" className="btn-outline text-base w-full sm:w-auto justify-center">
-            <Heart size={18} />
-            Fazer uma Doação
-          </a>
+          </button>
+
         </div>
 
         {/* Scroll hint */}

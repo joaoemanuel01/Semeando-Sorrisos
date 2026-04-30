@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X, Users } from 'lucide-react';
+import { useHighlight } from '../../context/HighlightContext';
 
 const NAV_LINKS = [
-  { label: 'Sobre Nós',     href: '#sobre' },
-  { label: 'Impacto',       href: '#impacto' },
-  { label: 'Como Ajudar',   href: '#ajudar' },
+  { label: 'Sobre Nós',       href: '#sobre' },
+  { label: 'Impacto',         href: '#impacto' },
+  { label: 'Doações',         href: '#doacoes' },
   { label: 'Ponto de Coleta', href: '#coleta' },
-  { label: 'Dúvidas',       href: '#faq' },
+  { label: 'Voluntariado',    href: '#voluntario' },
+  { label: 'Dúvidas',         href: '#faq' },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { triggerHighlight } = useHighlight();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -20,6 +23,11 @@ export default function Navbar() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const handleVolunteerClick = () => {
+    closeMenu();
+    triggerHighlight();
+  };
 
   return (
     <header
@@ -32,12 +40,7 @@ export default function Navbar() {
 
           {/* Logo + Brand */}
           <a href="#hero" className="flex items-center gap-3 group">
-            {/*
-              ============================================================
-              LOGO: Substitua o src abaixo pelo caminho do arquivo logo.svg
-              Exemplo: src="/logo.svg"
-              ============================================================
-            */}
+          
             <img
               src="/logo.svg"
               alt="Semeando Sorrisos logo"
@@ -60,29 +63,22 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="font-body text-sm font-medium text-navy-700 hover:text-aqua-600 
+                  className="font-body text-sm font-medium text-navy-700 hover:text-aqua-600
                              transition-colors duration-200 relative group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-aqua-500 
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-aqua-500
                                    group-hover:w-full transition-all duration-300" />
                 </a>
               </li>
             ))}
           </ul>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a href="#ajudar" className="btn-primary text-sm py-3 px-6">
-              <Heart size={16} />
-              Doe Agora
-            </a>
-          </div>
 
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 rounded-lg text-navy-800 hover:bg-aqua-50 transition-colors"
+            className="lg:hidden p-2 text-navy-800 hover:bg-aqua-50 transition-colors"
             aria-label="Abrir menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -101,18 +97,21 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={closeMenu}
-                  className="block px-4 py-3 font-body font-medium text-navy-700 
-                             hover:text-aqua-600 hover:bg-aqua-50 rounded-xl transition-colors"
+                  className="block px-4 py-3 font-body font-medium text-navy-700
+                             hover:text-aqua-600 hover:bg-aqua-50 transition-colors"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
             <li className="mt-3 px-4">
-              <a href="#ajudar" onClick={closeMenu} className="btn-primary w-full justify-center">
-                <Heart size={16} />
-                Doe Agora
-              </a>
+              <button
+                onClick={handleVolunteerClick}
+                className="btn-primary w-full justify-center"
+              >
+                <Users size={16} />
+                Quero ser Voluntário
+              </button>
             </li>
           </ul>
         </div>

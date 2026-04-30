@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
+import { HighlightProvider } from './context/HighlightContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
 import SobreNos from './components/sections/SobreNos';
 import Impacto from './components/sections/Impacto';
-import ComoAjudar from './components/sections/ComoAjudar';
+import Doacoes from './components/sections/Doacoes';
 import PontoDeColeta from './components/sections/PontoDeColeta';
+import Voluntario from './components/sections/Voluntario';
 import FAQ from './components/sections/FAQ';
 
-function App() {
+function AppContent() {
+  // Scroll-based fade-up animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -31,8 +34,9 @@ function App() {
         <Hero />
         <SobreNos />
         <Impacto />
-        <ComoAjudar />
+        <Doacoes />
         <PontoDeColeta />
+        <Voluntario />
         <FAQ />
       </main>
       <Footer />
@@ -40,4 +44,10 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <HighlightProvider>
+      <AppContent />
+    </HighlightProvider>
+  );
+}

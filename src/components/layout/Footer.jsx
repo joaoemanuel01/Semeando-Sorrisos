@@ -37,7 +37,7 @@ export default function Footer() {
               onError={(e) => { e.target.style.display = 'none'; }}
             />
             <div>
-              <p className="text-center font-display font-bold text-aqua-300 text-base tracking-wide">
+              <p className="font-display font-bold text-aqua-300 text-base tracking-wide">
                 SEMEANDO SORRISOS
               </p>
               <p className="text-xs text-aqua-500 tracking-widest mt-1">

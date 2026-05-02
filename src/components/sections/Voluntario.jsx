@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Send, ExternalLink, HandHeart } from 'lucide-react';
 
-// TODO: substitua pelo número real com DDI+DDD (ex: 5562999990000)
-const WHATSAPP_NUMBER = '5562996732455';
+const WHATSAPP_NUMBER = '5562993855866';
 
 export default function Voluntario() {
   const [form, setForm] = useState({ nome: '', email: '', whatsapp: '', mensagem: '' });

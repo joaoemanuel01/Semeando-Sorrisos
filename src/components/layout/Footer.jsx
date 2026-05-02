@@ -1,6 +1,5 @@
 import { Heart } from 'lucide-react';
 
-// Simple Instagram SVG icon (lucide-react doesn't include it)
 function InstagramIcon({ size = 18, className = '' }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
@@ -14,29 +13,23 @@ function InstagramIcon({ size = 18, className = '' }) {
 }
 
 const SOCIAL_LINKS = [
-  {
-    label: '@semeandosorrisosjg',
-    href: 'https://www.instagram.com/semeandosorrisosjg',
-  },
-  {
-    label: '@ceu_joaogrand',
-    href: 'https://www.instagram.com/ceu_joaogrand',
-  },
+  { label: '@semeandosorrisosjg', href: 'https://www.instagram.com/semeandosorrisosjg' },
+  { label: '@ceu_joaogrand',      href: 'https://www.instagram.com/ceu_joaogrand' },
 ];
+
+const NAV_ITEMS = ['Sobre Nós', 'Impacto', 'Doações', 'Ponto de Coleta', 'Voluntariado', 'Dúvidas'];
+const NAV_HREFS = ['sobre', 'impacto', 'doacoes', 'coleta', 'voluntario', 'faq'];
 
 export default function Footer() {
   return (
     <footer className="bg-navy-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
 
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-4">
-            {/*
-              ================================================================
-              LOGO (rodapé): Substitua o src pelo caminho correto do logo.svg
-              ================================================================
-            */}
+            
             <img
               src="/logo.svg"
               alt="Semeando Sorrisos"
@@ -44,7 +37,7 @@ export default function Footer() {
               onError={(e) => { e.target.style.display = 'none'; }}
             />
             <div>
-              <p className="font-display font-bold text-aqua-300 text-base tracking-wide">
+              <p className="text-center font-display font-bold text-aqua-300 text-base tracking-wide">
                 SEMEANDO SORRISOS
               </p>
               <p className="text-xs text-aqua-500 tracking-widest mt-1">
@@ -59,10 +52,10 @@ export default function Footer() {
               Navegação
             </h4>
             <ul className="space-y-2">
-              {['Sobre Nós', 'Impacto', 'Como Ajudar', 'Ponto de Coleta', 'Dúvidas'].map((item, i) => (
+              {NAV_ITEMS.map((item, i) => (
                 <li key={i}>
                   <a
-                    href={`#${['sobre','impacto','ajudar','coleta','faq'][i]}`}
+                    href={`#${NAV_HREFS[i]}`}
                     className="text-sm text-gray-400 hover:text-aqua-300 transition-colors"
                   >
                     {item}
@@ -84,7 +77,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-400 
+                  className="flex items-center gap-2 text-sm text-gray-400
                              hover:text-aqua-300 transition-colors group"
                 >
                   <InstagramIcon
@@ -98,15 +91,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row 
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row
                         items-center justify-between gap-3 text-center">
           <p className="text-xs text-gray-500">
             © 2026 Semeando Sorrisos. Todos os direitos reservados.
           </p>
-          <p className="text-xs text-gray-600 flex items-center gap-1">
-            Feito com <Heart size={12} className="text-aqua-500" /> em Goiânia
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <p className="text-xs text-gray-600 flex items-center gap-1">
+              Feito com <Heart size={12} className="text-aqua-500" /> em Goiânia
+            </p>
+            <span className="hidden sm:block text-gray-700 text-xs">·</span>
+            <p className="text-xs text-gray-600">
+              crafted by{' '}
+              <span className="text-aqua-400 font-medium tracking-wide">joaoemanuel</span>
+            </p>
+          </div>
         </div>
+
       </div>
     </footer>
   );

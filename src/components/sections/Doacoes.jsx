@@ -55,11 +55,7 @@ export default function Doacoes() {
         </div>
 
         <p className="text-center mt-8 text-sm text-navy-500 font-body">
-          Entregue no{' '}
-          <a href="#coleta" className="text-aqua-600 font-medium hover:underline">
-            ponto de coleta
-          </a>{' '}
-          nos horários disponíveis. Fora do horário?{' '}
+           Fora do horário?{' '}
           <a
             href="https://www.instagram.com/semeandosorrisosjg"
             target="_blank"

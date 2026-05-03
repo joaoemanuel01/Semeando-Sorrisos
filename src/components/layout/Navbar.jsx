@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Heart } from 'lucide-react';
-import { useHighlight } from '../../context/HighlightContext';
 
 const NAV_LINKS = [
   { label: 'Sobre Nós',       href: '#sobre' },
@@ -14,7 +13,6 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { triggerHighlight } = useHighlight();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -24,10 +22,6 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  const handleVolunteerClick = () => {
-    closeMenu();
-    triggerHighlight();
-  };
 
   return (
     <header
@@ -40,7 +34,7 @@ export default function Navbar() {
 
           {/* Logo + Brand */}
           <a href="#hero" className="flex items-center gap-3 group">
-          
+            
             <img
               src="/logo.svg"
               alt="Semeando Sorrisos logo"
@@ -74,7 +68,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -104,17 +97,21 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+
+            {/* Mobile CTA — Doação */}
             <li className="mt-3 px-4">
-              <button
-                onClick={handleVolunteerClick}
+              <a
+                href="#doacoes"
+                onClick={closeMenu}
                 className="btn-primary w-full justify-center"
               >
                 <Heart size={16} />
                 Quero Fazer uma Doação
-              </button>
+              </a>
             </li>
           </ul>
         </div>
+
       </div>
     </header>
   );

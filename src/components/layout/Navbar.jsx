@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Users } from 'lucide-react';
+import { Menu, X, Heart } from 'lucide-react';
 import { useHighlight } from '../../context/HighlightContext';
 
 const NAV_LINKS = [
@@ -109,8 +109,8 @@ export default function Navbar() {
                 onClick={handleVolunteerClick}
                 className="btn-primary w-full justify-center"
               >
-                <Users size={16} />
-                Quero ser Voluntário
+                <Heart size={16} />
+                Quero Fazer uma Doação
               </button>
             </li>
           </ul>

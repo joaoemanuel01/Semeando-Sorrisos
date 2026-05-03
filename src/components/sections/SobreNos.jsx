@@ -33,7 +33,7 @@ export default function SobreNos() {
               Nossa Missão
             </p>
             <h2 className="section-title mb-6">
-              Mais do que doações —<br />
+              Mais do que doações, <br />
               <span className="text-aqua-600">presença e cuidado</span>
             </h2>
             <p className="font-body text-navy-700/80 text-lg leading-relaxed mb-6">

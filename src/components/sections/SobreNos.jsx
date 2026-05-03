@@ -18,6 +18,9 @@ const CARDS = [
   { src: iconResponsabilidade, title: 'Responsabilidade', desc: 'Organização e transparência em cada ação.' },
 ];
 
+// Alterna esquerda/direita por índice
+const fadeDir = (i) => (i % 2 === 0 ? 'fade-left' : 'fade-right');
+
 export default function SobreNos() {
   return (
     <section id="sobre" className="py-20 md:py-28 bg-white">
@@ -25,12 +28,12 @@ export default function SobreNos() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Text Column */}
-          <div className="fade-up">
+          <div className="fade-left">
             <p className="text-xs font-semibold tracking-widest text-aqua-600 uppercase mb-3">
               Nossa Missão
             </p>
             <h2 className="section-title mb-6">
-              Mais do que doações,<br />
+              Mais do que doações —<br />
               <span className="text-aqua-600">presença e cuidado</span>
             </h2>
             <p className="font-body text-navy-700/80 text-lg leading-relaxed mb-6">
@@ -53,13 +56,13 @@ export default function SobreNos() {
             </ul>
           </div>
 
-          {/* Cards Column */}
-          <div className="fade-up grid grid-cols-2 gap-4">
+          {/* Cards Column — cada card entra alternado */}
+          <div className="grid grid-cols-2 gap-4">
             {CARDS.map(({ src, title, desc }, i) => (
               <div
                 key={i}
-                className="card flex flex-col items-center gap-3 text-center"
-                style={{ transitionDelay: `${i * 80}ms` }}
+                className={`card flex flex-col items-center gap-3 text-center ${fadeDir(i)}`}
+                style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <img
                   src={src}

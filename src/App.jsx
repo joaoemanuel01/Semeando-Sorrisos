@@ -11,7 +11,6 @@ import Voluntario from './components/sections/Voluntario';
 import FAQ from './components/sections/FAQ';
 
 function AppContent() {
-  // Scroll-based fade-up animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -21,9 +20,13 @@ function AppContent() {
       },
       { threshold: 0.1 }
     );
+
     const timer = setTimeout(() => {
-      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+      // Registra todas as classes de animação
+      document.querySelectorAll('.fade-up, .fade-left, .fade-right')
+        .forEach((el) => observer.observe(el));
     }, 100);
+
     return () => { clearTimeout(timer); observer.disconnect(); };
   }, []);
 

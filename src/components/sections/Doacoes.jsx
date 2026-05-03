@@ -5,7 +5,7 @@ import iconHigieneInfantil from '../../assets/icon-higieneinfantil.png';
 import iconBrinquedos      from '../../assets/icon-brinquedos.png';
 
 const DONATIONS = [
-  { img: iconRoupas,          title: 'Roupas e Sapatos',  desc: 'Para crianças e adultos, em bom estado de conservação.' },
+  { img: iconRoupas,          title: 'Roupas & Sapatos',  desc: 'Para crianças e adultos, em bom estado de conservação.' },
   { img: iconAlimentos,       title: 'Alimentos',          desc: 'Alimentos não-perecíveis e produtos da cesta básica.' },
   { img: iconHigienePessoal,  title: 'Higiene Pessoal',   desc: 'Produtos de higiene geral para adultos.' },
   { img: iconHigieneInfantil, title: 'Higiene Infantil',  desc: 'Fraldas, lenços umedecidos, sabonete infantil e mais.' },
@@ -35,7 +35,7 @@ export default function Doacoes() {
           {DONATIONS.map(({ img, title, desc }, i) => (
             <div
               key={i}
-              className="card flex flex-col items-center text-center gap-4 fade-up"
+              className={`card flex flex-col items-center text-center gap-4 ${i % 2 === 0 ? 'fade-left' : 'fade-right'}`}
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               <img
@@ -53,6 +53,22 @@ export default function Doacoes() {
             </div>
           ))}
         </div>
+
+        <p className="text-center mt-8 text-sm text-navy-500 font-body">
+          Entregue no{' '}
+          <a href="#coleta" className="text-aqua-600 font-medium hover:underline">
+            ponto de coleta
+          </a>{' '}
+          nos horários disponíveis. Fora do horário?{' '}
+          <a
+            href="https://www.instagram.com/semeandosorrisosjg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-aqua-600 font-medium hover:underline"
+          >
+            Entre em contato pelo Instagram.
+          </a>
+        </p>
       </div>
     </section>
   );

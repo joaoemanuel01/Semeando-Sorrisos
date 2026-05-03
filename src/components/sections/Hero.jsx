@@ -1,8 +1,26 @@
-import { Users,  } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { Users } from 'lucide-react';
 import { useHighlight } from '../../context/HighlightContext';
 
 export default function Hero() {
   const { triggerHighlight } = useHighlight();
+  const blob1Ref = useRef(null);
+  const blob2Ref = useRef(null);
+
+  // Parallax suave nos blobs decorativos ao rolar
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY;
+      if (blob1Ref.current) {
+        blob1Ref.current.style.transform = `translateY(${y * 0.18}px)`;
+      }
+      if (blob2Ref.current) {
+        blob2Ref.current.style.transform = `translateY(${y * 0.1}px)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section
@@ -12,21 +30,23 @@ export default function Hero() {
         background: 'linear-gradient(160deg, #ffffff 0%, #e0f5fe 45%, #b9ecfd 100%)',
       }}
     >
-      {/* Decorative blobs */}
+      {/* Decorative blobs — se movem no parallax */}
       <div
-        className="absolute top-20 right-0 w-72 h-72 md:w-96 md:h-96 opacity-20 pointer-events-none"
+        ref={blob1Ref}
+        className="absolute top-20 right-0 w-72 h-72 md:w-96 md:h-96 opacity-20 pointer-events-none will-change-transform"
         style={{ background: 'radial-gradient(circle, #38cef5 0%, transparent 70%)' }}
       />
       <div
-        className="absolute bottom-10 left-0 w-56 h-56 opacity-15 pointer-events-none"
+        ref={blob2Ref}
+        className="absolute bottom-10 left-0 w-56 h-56 opacity-15 pointer-events-none will-change-transform"
         style={{ background: 'radial-gradient(circle, #0293c0 0%, transparent 70%)' }}
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm 
-                        border border-aqua-200 text-aqua-700 text-xs font-semibold 
-                        tracking-widest uppercase px-4 py-2 rounded-full mb-8 shadow-sm">
+        <div className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm
+                        border border-aqua-200 text-aqua-700 text-xs font-semibold
+                        tracking-widest uppercase px-4 py-2 mb-8 shadow-sm rounded-full">
           <span className="w-2 h-2 rounded-full bg-aqua-500 animate-pulse" />
           Projeto Social Independente · Goiânia
         </div>
@@ -49,7 +69,6 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          
           <button
             onClick={triggerHighlight}
             className="btn-primary text-base w-full sm:w-auto justify-center"
@@ -57,7 +76,6 @@ export default function Hero() {
             <Users size={18} />
             Quero Ser Voluntário
           </button>
-
         </div>
 
         {/* Scroll hint */}

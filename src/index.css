@@ -30,15 +30,25 @@
     @apply text-3xl md:text-4xl lg:text-5xl font-bold text-navy-800 leading-tight;
   }
 
+  /* ── Card com micro-hover no ícone 3D ── */
   .card {
-    @apply bg-white rounded shadow-sm border border-aqua-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300;
+    @apply bg-white rounded shadow-sm border border-aqua-100 p-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300;
+  }
+
+  .card img {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .card:hover img {
+    transform: scale(1.18) rotate(-3deg);
   }
 }
 
+/* ── Fade-up padrão ── */
 .fade-up {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(32px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
 .fade-up.visible {
@@ -46,6 +56,31 @@
   transform: translateY(0);
 }
 
+/* ── Fade da esquerda (cards ímpares) ── */
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Fade da direita (cards pares) ── */
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Accordion ── */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
